@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +27,12 @@ namespace RestApiCoreApp.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        [ProducesResponseType(typeof(string), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        public ActionResult Post([FromBody] string value)
         {
+
+            return Ok();
         }
 
         // PUT api/values/5
